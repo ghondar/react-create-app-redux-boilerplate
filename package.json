@@ -34,7 +34,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "format": "prettier-eslint --write \"src/**/*.{js,jsx}\"",
+    "format": "prettier-eslint --write \"**/*.{js,jsx}\"",
     "eject": "react-scripts eject",
     "serve": "NODE_ENV=development node server/index.js",
     "deploy": "NODE_ENV=production node server/index.js"
@@ -42,10 +42,12 @@
   "lint-staged": {
     "src/**/*.{js,jsx}": [
       "prettier-eslint --write \"src/**/*.{js,jsx}\"",
+      "react-scripts test --env=jsdom",
       "git add"
     ]
   },
   "devDependencies": {
+    "lint-staged": "7.0.0",
     "prettier-eslint-cli": "^4.7.1"
   }
 }

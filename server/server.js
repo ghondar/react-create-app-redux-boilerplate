@@ -31,8 +31,7 @@ app.listen(PORT, () => {
 
 // Handle the bugs somehow
 app.on('error', error => {
-  if(error.syscall !== 'listen')
-    throw error
+  if(error.syscall !== 'listen') throw error
 
   const bind = typeof PORT === 'string' ? 'Pipe ' + PORT : 'Port ' + PORT
 
