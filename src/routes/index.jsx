@@ -1,18 +1,10 @@
-import React from 'react'
-import { Router, Route, IndexRoute } from 'react-router'
-import loadable from 'loadable-components'
+import { Route } from 'react-router-dom'
+import { ConnectedRouter } from 'react-router-redux'
 
-import Loading from '../components/Common/Loading'
-import AppContainer from '../containers/AppContainer'
+import Dashboard from '../containers/Dashboard'
 
-const Dashboard = loadable(() => import('../containers/Dashboard'), {
-  LoadingComponent: () => <Loading />
-})
-
-export default (React, browserHistory, store) => (
-  <Router history={browserHistory}>
-    <Route component={AppContainer} path='/'>
-      <IndexRoute component={Dashboard} />
-    </Route>
-  </Router>
+export default (React, history) => (
+  <ConnectedRouter history={history}>
+    <Route component={Dashboard} exact path='/' />
+  </ConnectedRouter>
 )

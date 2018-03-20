@@ -1,21 +1,15 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import { routerMiddleware } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
 import thunk from 'redux-thunk'
 import reducers from '../reducers'
 
-const config = {
-  key: 'boilerplate',
-  storage
-}
+export const history = createHistory()
 
-const reducer = persistReducer(config, reducers)
+const initialState = {}
+const middleware = [ thunk, routerMiddleware(history) ]
 
-const finalCreateStore = compose(applyMiddleware(thunk))(createStore)
+const finalCreateStore = compose(applyMiddleware(...middleware))
+const store = createStore(reducers, initialState, finalCreateStore)
 
-export default function configureStore(initialState) {
-  let store = finalCreateStore(reducer, initialState)
-  let persistor = persistStore(store)
-
-  return { persistor, store }
-}
+export default store
