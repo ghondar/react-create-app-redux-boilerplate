@@ -147,6 +147,35 @@ module.exports = {
               compact: true
             }
           },
+          {
+            test  : /\.styl$/,
+            loader: ExtractTextPlugin.extract(
+              Object.assign(
+                {
+                  fallback: {
+                    loader : require.resolve('style-loader'),
+                    options: {
+                      hmr: false
+                    }
+                  },
+                  use: [
+                    {
+                      loader : require.resolve('css-loader'),
+                      options: {
+                        importLoaders : 1,
+                        minimize      : true,
+                        sourceMap     : shouldUseSourceMap,
+                        modules       : true,
+                        localIdentName: '__[hash:base64:5]'
+                      }
+                    },
+                    require.resolve('stylus-loader')
+                  ]
+                },
+                extractTextPluginOptions
+              )
+            )
+          },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -174,9 +203,11 @@ module.exports = {
                     {
                       loader : require.resolve('css-loader'),
                       options: {
-                        importLoaders: 1,
-                        minimize     : true,
-                        sourceMap    : shouldUseSourceMap
+                        importLoaders : 1,
+                        minimize      : true,
+                        sourceMap     : shouldUseSourceMap,
+                        modules       : true,
+                        localIdentName: '__[hash:base64:5]'
                       }
                     },
                     {

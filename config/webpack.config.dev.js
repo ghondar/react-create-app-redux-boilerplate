@@ -149,6 +149,21 @@ module.exports = {
               cacheDirectory: true
             }
           },
+          {
+            test  : /\.styl$/,
+            loader: [
+              require.resolve('style-loader'),
+              {
+                loader : 'css-loader',
+                options: {
+                  importLoaders : 1,
+                  modules       : true,
+                  localIdentName: '__[hash:base64:5]'
+                }
+              },
+              require.resolve('stylus-loader')
+            ]
+          },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // "style" loader turns CSS into JS modules that inject <style> tags.
@@ -161,7 +176,9 @@ module.exports = {
               {
                 loader : require.resolve('css-loader'),
                 options: {
-                  importLoaders: 1
+                  importLoaders : 1,
+                  modules       : true,
+                  localIdentName: '__[hash:base64:5]'
                 }
               },
               {
@@ -169,8 +186,10 @@ module.exports = {
                 options: {
                   // Necessary for external CSS imports to work
                   // https://github.com/facebookincubator/create-react-app/issues/2677
-                  ident  : 'postcss',
-                  plugins: () => [
+                  ident         : 'postcss',
+                  modules       : true,
+                  localIdentName: '__[hash:base64:5]',
+                  plugins       : () => [
                     require('postcss-flexbugs-fixes'),
                     autoprefixer({
                       browsers: [
