@@ -35,7 +35,7 @@ const universalLoader = (req, res) => {
     // Create a store and sense of history based on the current path
     const { store, history } = createServerStore(req.path)
 
-    const routes = createRoutes(React, history)
+    const routes = createRoutes(history)
 
     // Render App in React
     const routeMarkup = renderToString(<Root store={store}>{routes}</Root>)
