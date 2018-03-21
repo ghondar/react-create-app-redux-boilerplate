@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import { container } from './Loading.styl'
+import './Loading.css'
 
 export default class Loading extends Component {
   render() {
-    return <div className={container}>Cargando...</div>
+    return <div className='container'>Cargando...</div>
   }
 }

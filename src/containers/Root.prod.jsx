@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist'
 
-import Loading from '../components/Common/Loading'
+import Loading from '../components/Common/Loading.jsx'
 
 export default class Root extends Component {
   render() {
-    const { store, persistor, children } = this.props
+    const { store, children } = this.props
+    const persistor = persistStore(store)
 
     return (
       <Provider store={store}>

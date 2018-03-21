@@ -1,10 +1,14 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createLogger } from 'redux-logger'
-import { persistStore, persistReducer } from 'redux-persist'
+import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { routerMiddleware } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
 import thunk from 'redux-thunk'
 import reducers from '../reducers'
 import DevTools from '../containers/DevTools'
+
+export const history = createHistory()
 
 const config = {
   key      : 'boilerplate',
@@ -13,16 +17,14 @@ const config = {
 }
 
 const reducer = persistReducer(config, reducers)
+const initialState = {}
+const middleware = [ thunk, routerMiddleware(history), createLogger() ]
 
 const finalCreateStore = compose(
-  applyMiddleware(thunk),
-  applyMiddleware(createLogger()),
+  applyMiddleware(...middleware),
   DevTools.instrument()
-)(createStore)
+)
 
-export default function configureStore(initialState) {
-  let store = finalCreateStore(reducer, initialState)
-  let persistor = persistStore(store)
+const store = createStore(reducer, initialState, finalCreateStore)
 
-  return { persistor, store }
-}
+export default store
