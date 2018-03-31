@@ -42,7 +42,7 @@
     "react/jsx-curly-spacing": ["error", {
       "when": "never"
     }],
-    "react/jsx-filename-extension": [1, { "extensions": [".jsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
     "react/jsx-handler-names": ["error", {
       "eventHandlerPrefix": "_handle",
