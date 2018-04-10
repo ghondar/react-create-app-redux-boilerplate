@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
 
-import { title } from './Dashboard.styl'
+import { H1 } from './Dashboard.style'
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -11,7 +11,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    return <h1 className={title}>Hola Mundo</h1>
+    return <H1>Hola Mundo</H1>
   }
 }
 

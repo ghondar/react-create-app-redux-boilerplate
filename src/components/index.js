@@ -1,2 +1,2 @@
-import './styl/global.styl'
-import './styl/bootstrap.css'
+import './styles/global.css'
+import './styles/bootstrap.css'
