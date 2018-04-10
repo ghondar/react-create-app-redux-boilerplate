@@ -15,7 +15,9 @@ router.use((req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
-  res.json({})
+  res.json({
+    test: 'ready'
+  })
 })
 
 export default router
