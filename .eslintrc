@@ -23,6 +23,7 @@
       }
   },
   "plugins": [
+      "react",
       "eslint-plugin-react"
   ],
   "rules": {
@@ -53,6 +54,10 @@
     "react/jsx-no-duplicate-props": ["error"],
     "react/jsx-sort-props": ["error"],
     "react/jsx-wrap-multilines": ["error"],
+    "react/jsx-uses-react": ["error"],
+    "react/jsx-uses-vars": ["error"],
+    "react/react-in-jsx-scope": ["error"],
+    "no-unused-vars": ["error", { "vars": "local", "args": "after-used", "ignoreRestSiblings": false }],
     "no-empty": [
       2,
       {
