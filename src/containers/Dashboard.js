@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { hot } from 'react-hot-loader'
 
 class Dashboard extends Component {
   render() {
@@ -7,4 +6,4 @@ class Dashboard extends Component {
   }
 }
 
-export default hot(module)(Dashboard)
+export default Dashboard
