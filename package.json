@@ -63,11 +63,10 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "GENERATE_SOURCEMAP=false react-app-rewired build",
     "test": "eslint . --ext .js && react-app-rewired test --env=jsdom",
     "debug": "NODE_ENV=debug npm test",
-    "format":
-      "prettier-eslint --write \"{src,server}/**/*.js\" && eslint . --ext .js --fix",
+    "format": "prettier-eslint --write \"{src,server}/**/*.js\" && eslint . --ext .js --fix",
     "eject": "react-scripts eject",
     "lint-staged": "lint-staged",
     "dev": "NODE_ENV=development nodemon server/index.js",
@@ -76,11 +75,7 @@
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
-    "{src,server}/**/*.js": [
-      "prettier-eslint --write \"{src,server}/**/*.js\"",
-      "eslint . --ext .js --fix",
-      "git add"
-    ]
+    "{src,server}/**/*.js": ["prettier-eslint --write \"{src,server}/**/*.js\"", "eslint . --ext .js --fix", "git add"]
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",
