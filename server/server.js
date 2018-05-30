@@ -17,6 +17,7 @@ app.use(compression())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan('dev'))
+app.disable('x-powered-by')
 
 // Set up route handling, include static assets and an optional API
 app.use('/', index)

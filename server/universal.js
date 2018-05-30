@@ -6,7 +6,6 @@ import { renderToString } from 'react-dom/server'
 import { getLoadableState } from 'loadable-components/server'
 import Helmet from 'react-helmet'
 
-import { Provider } from 'react-redux'
 import createServerStore from './store'
 
 import Root from '../src/containers/Root'
@@ -17,7 +16,7 @@ const prepHTML = (data, { html, head, body, loadableState }) => {
   data = data.replace('<html lang="en">', `<html ${html}`)
   data = data.replace('</head>', `${head}</head>`)
   data = data.replace('<div id="root"></div>', `<div id="root">${body}</div>`)
-  data = data + loadableState
+  data = data.replace('<script', loadableState + '<script')
 
   return data
 }
@@ -51,11 +50,8 @@ const universalLoader = (req, res) => {
 
     // Form the final HTML response
     const html = prepHTML(htmlData, {
-      html: helmet.htmlAttributes.toString(),
-      head:
-        helmet.title.toString() +
-        helmet.meta.toString() +
-        helmet.link.toString(),
+      html         : helmet.htmlAttributes.toString(),
+      head         : helmet.title.toString() + helmet.meta.toString() + helmet.link.toString(),
       body         : routeMarkup,
       loadableState: loadableState.getScriptTag()
     })

@@ -1,3 +1,5 @@
+// Add alias modules
+require('module-alias/register')
 // Ignore those pesky styles
 require('ignore-styles')
 
@@ -5,11 +7,7 @@ require('ignore-styles')
 require('babel-register')({
   ignore : /\/(build|node_modules)\//,
   presets: [ 'env', 'react-app' ],
-  plugins: [
-    'syntax-dynamic-import',
-    'dynamic-import-node',
-    'loadable-components/babel'
-  ]
+  plugins: [ 'loadable-components/babel', 'babel-plugin-dynamic-import-node' ]
 })
 
 // Now that the nonsense is over... load up the server entry point
