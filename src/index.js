@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import { loadComponents } from 'loadable-components'
 // import registerServiceWorker from './registerServiceWorker'
-import './utils/default'
 import App from './App'
 
 if(module.hot) module.hot.accept()

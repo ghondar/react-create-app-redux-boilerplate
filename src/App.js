@@ -1,4 +1,3 @@
-import './static/styles/app.scss'
 import React from 'react'
 
 import store, { history } from './store/configureStore'
