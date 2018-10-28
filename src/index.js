@@ -17,9 +17,13 @@ const render = Component => {
 }
 
 if(process.env.NODE_ENV === 'production')
-  loadComponents().then(() => {
-    render(App)
-  })
+  loadComponents()
+    .then(() => {
+      render(App)
+    })
+    .catch(() => {
+      render(App)
+    })
 else render(App)
 
 // Webpack Hot Module Replacement API

@@ -6,7 +6,8 @@ import loadable from 'loadable-components'
 import Loading from 'components/Common/Loading'
 
 const Dashboard = loadable(() => import(/* webpackChunkName: "Dashboard" */ 'containers/Dashboard'), {
-  LoadingComponent: () => <Loading />
+  LoadingComponent: () => <Loading />,
+  modules         : [ 'containers/Dashboard' ]
 })
 
 export default history => (
